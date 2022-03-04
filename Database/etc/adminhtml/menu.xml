@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Database::magenest" title="Blog" module="Magenest_Database" sortOrder="41" resource="Magenest_Database::menu"/>
+        <add id="Magenest_Database::parent" title="Blog" module="Magenest_Database" sortOrder="10" resource="Magenest_Database::parent" parent="Magenest_Database::magenest"/>
+        <add id="Magenest_Database::blog" title="Magenest Blog" module="Magenest_Database" sortOrder="10" action="blog/blog/index" resource="Magenest_Database::movie" parent="Magenest_Database::parent"/>
+        <add id="Magenest_Database::category" title="Magenest Category" module="Magenest_Database" sortOrder="10" action="blog/category/index" resource="Magenest_Database::director" parent="Magenest_Database::parent"/>
+    </menu>
+</config>

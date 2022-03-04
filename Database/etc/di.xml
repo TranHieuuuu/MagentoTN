@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_blog_listing_data_source" xsi:type="string">Magenest\Database\Model\ResourceModel\MagenestBlog\Grid\Collection</item>
+                <item name="blog_category_listing_data_source" xsi:type="string">blog_category_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="blog_category_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_category</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Database\Model\ResourceModel\MagenestCategory</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Customer\Controller\Account\EditPost">
+        <plugin name="intern_chapter9_edit_customer" type="Magenest\Database\Plugin\CustomShippingAddress" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="intern_chapter9_edit_custom_shipping_address" type="Magenest\Database\Plugin\CustomShippingAddress" sortOrder="2" disabled="false"/>
+    </type>
+<!--    <type name="Magento\Checkout\Model\ShippingInformationManagement">-->
+<!--        <plugin name="save-in-quote" type="Magenest\Database\Plugin\Checkout\Delivery" sortOrder="10"/>-->
+<!--    </type>-->
+<!--    <type name="Magento\Customer\Controller\Address\FormPost">-->
+<!--        <plugin name="intern_chapter9_edit_custom_address" type="Magenest\Database\Plugin\Address\FormPost" sortOrder="2" disabled="false"/>-->
+<!--    </type>-->
+    <preference for="Magenest\Database\Api\MagenestBlogRepositoryInterface" type="Magenest\Database\Model\MagenestBlogRepository"/>
+    <preference for="Magenest\Database\Api\Data\MagenestBlogInterface" type="Magenest\Database\Model\MagenestBlog"/>
+    <preference for="Magenest\Database\Api\Data\MagenestBlogSearchResultInterface" type="Magenest\Database\Model\MagenestBlogSearchResult"/>
+</config>
